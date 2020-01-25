@@ -20,6 +20,8 @@ w0 = 2
 # Time-domain representation
 s = (a/np.pi)**(1/4)*np.exp(-a*t**2/2 + 1j*c*t**3/3 + 1j*b*t**2/2 + 1j*w0*t)
 
+print("Signal norm: ",np.linalg.norm(s))
+
 # Frequency domain representation
 w,s_hat = ctft(t,s)
 
@@ -67,7 +69,7 @@ plts[1][1].scatter(w_mean,0,color='red')
 plts[1][1].set_ylabel(r'$\Im(\hat{s})$')
 plts[1][1].set_xlabel(r'Frequency (Hz)')
 plts[1][1].set_xlim((-30,30))
-plt.title('Time and Frequency Descriptions')
+fig.suptitle('Time and Frequency Descriptions')
 
 plt.figure()
 plt.plot(td,wi,'-',color='red',label='Estimate')
@@ -77,11 +79,11 @@ plt.xlabel(r'time (sec)')
 plt.title('Instantaneous Frequency')
 plt.legend()
 
-plt.figure()
-plt.plot(wd,tg,'-',color='red',label='Estimate')
-plt.plot(t,(b/(a**2+b**2))*(w-w0),'--',color='green',label='True')
-plt.ylabel(r'$t_g(\omega)$')
-plt.xlabel(r'Frequency (Hz)')
-plt.title('Group Delay')
-plt.legend()
+# plt.figure()
+# plt.plot(wd,tg,'-',color='red',label='Estimate')
+# plt.plot(t,(b/(a**2+b**2))*(w-w0),'--',color='green',label='True')
+# plt.ylabel(r'$t_g(\omega)$')
+# plt.xlabel(r'Frequency (Hz)')
+# plt.title('Group Delay')
+# plt.legend()
 plt.show()
